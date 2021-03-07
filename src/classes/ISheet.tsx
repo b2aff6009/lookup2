@@ -1,8 +1,11 @@
 import IEntry from './IEntry'
 
-interface ISheet{
-  entries : IEntry[]
+export interface ISheet{
+  name : string
   version : number
+  active? : boolean
+  entries? : IEntry[]
+  source? : string
 }
 
 export default ISheet

@@ -1,21 +1,43 @@
 import { useState } from 'react'
 import IEntry from '../classes/IEntry'
+import ISheet from '../classes/ISheet'
+import { loadSheet } from './dataSource'
 
-const useSearch = (InitEntries : IEntry[]) => {
-    const [entries, setEntries] = useState(InitEntries)
-    const [possibleEntires, setPossibleEntries] = useState(InitEntries)
+const useSearch = (InitSheets : ISheet[]) => {
+    const [activeSheets, setActiveSheets] = useState(InitSheets)
+    const InitEntrys : IEntry[] = []
+    const [entries, setEntries] = useState(InitEntrys)
 
     const setSearchInput = (Input: string) => {
-        const FilterFunc = (entry: IEntry) => {
+        const GetEntires = (Sheet : ISheet) : IEntry[] => {
+            if (Sheet.entries == undefined)
+                return []
+            return Sheet.entries
+        }
+        const FilterFunc = (entry?: IEntry) => {
+            if (entry == undefined)
+                return false
             return (
             entry.tags.filter((value: string) => value.includes(Input)).length >
                 0 || entry.text.includes(Input)
             )
         }
-        setEntries(possibleEntires.filter(FilterFunc))
+
+        setEntries(activeSheets.flatMap(GetEntires).filter(FilterFunc))
     }
 
-    return {entries, setSearchInput, setPossibleEntries}
+    const setEnabledSheets = (sheet : ISheet, active : boolean) => {
+        const activeFilter = (Sheet : ISheet) => {
+            return Sheet.active
+        }
+
+        sheet.active = active
+        if (sheet.active && sheet.entries == undefined)
+            loadSheet(sheet)
+        setActiveSheets([...activeSheets, sheet].filter(activeFilter))
+    }
+
+    return {entries, setSearchInput, setEnabledSheets}
 }
 
 export default useSearch

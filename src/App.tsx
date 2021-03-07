@@ -3,14 +3,15 @@ import logo from './logo.svg'
 import './App.css'
 import EntryList from './components/EntryList'
 import SearchBar from './components/SearchBar'
+import Selection from './components/Selection'
 import useSearch from './backend/search'
-import getEntries from './backend/dataSource'
+import {getEntries, getSheets} from './backend/dataSource'
 
 function App() {
 
-  const possibleEntires = getEntries()
+  const possibleSheets = getSheets()
 
-  const {entries, setSearchInput, setPossibleEntries} = useSearch(possibleEntires)
+  const {entries, setSearchInput, setEnabledSheets} = useSearch(possibleSheets)
 
   return (
     <div className="App-border">
@@ -22,6 +23,7 @@ function App() {
           </p>
         </header>
         <body className="App-body">
+          <Selection setSelection={setEnabledSheets} sheets={getSheets()}/>
           <SearchBar callback={setSearchInput}/>
           <EntryList displayedEntries={entries}/>
         </body>

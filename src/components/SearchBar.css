@@ -1,0 +1,17 @@
+.InputForm {
+  background-color: #3a62b3;
+  color: white;
+  width: 90%;
+  align-items: center;
+  position: static;
+  top: 0%;
+  margin: 1%;
+}
+
+.Input {
+  text-align: center;
+  margin: 5px;
+  font-size: calc(9px + 2vmin);
+  width: 100%;
+  color: black;
+}

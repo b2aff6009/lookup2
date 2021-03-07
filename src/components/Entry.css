@@ -1,0 +1,18 @@
+.entry {
+  border: 2in;
+  padding: 0.05in;
+  background-color: black;
+  display: block;
+  block-size: fit-content;
+  width: fit-content;
+}
+.entry-border {
+  background: linear-gradient(to bottom right, red, purple);
+  position: relative;
+  border-radius: 5%;
+  padding: 3px;
+  margin: 10px;
+  block-size: fit-content;
+  width: fit-content;
+  flex-grow: 1;
+}

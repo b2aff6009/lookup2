@@ -1,0 +1,9 @@
+
+.EntryList-body{
+  background-color: #3a62b3;
+  font-size: calc(9px + 2vmin);
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

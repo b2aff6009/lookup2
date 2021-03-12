@@ -22,7 +22,7 @@ const LabeledCheckbbox = (props: ILabledCheckbox) => {
   }
   return (
     <div>
-      <Checkbox checked={checked} onChange={changeHandle} />
+      <Checkbox key={props.label} checked={checked} onChange={changeHandle} />
       <>{props.label}</>
     </div>
   )
@@ -33,6 +33,7 @@ const Selection = (props: ISelection) => {
     return (
       <div>
         <LabeledCheckbbox
+          key={sheet.name}
           label={sheet.name}
           sheet={sheet}
           onChange={props.setSelection}

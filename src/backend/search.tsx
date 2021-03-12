@@ -3,7 +3,8 @@ import IEntry from '../classes/IEntry'
 import ISheet from '../classes/ISheet'
 import { loadSheet } from './dataSource'
 
-const useSearch = (InitSheets : ISheet[]) => {
+const useSearch = () => {
+    const InitSheets : ISheet[] = []
     const [activeSheets, setActiveSheets] = useState(InitSheets)
     const InitEntrys : IEntry[] = []
     const [entries, setEntries] = useState(InitEntrys)
@@ -22,12 +23,13 @@ const useSearch = (InitSheets : ISheet[]) => {
                 0 || entry.text.includes(Input)
             )
         }
-
         setEntries(activeSheets.flatMap(GetEntires).filter(FilterFunc))
     }
 
     const setEnabledSheets = (sheet : ISheet, active : boolean) => {
         const activeFilter = (Sheet : ISheet) => {
+            if (Sheet.active == undefined)
+                return false
             return Sheet.active
         }
 

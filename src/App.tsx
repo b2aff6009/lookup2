@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import EntryList from './components/EntryList'
@@ -9,9 +8,7 @@ import {getEntries, getSheets} from './backend/dataSource'
 
 function App() {
 
-  const possibleSheets = getSheets()
-
-  const {entries, setSearchInput, setEnabledSheets} = useSearch(possibleSheets)
+  const {entries, setSearchInput, setEnabledSheets} = useSearch()
 
   return (
     <div className="App-border">

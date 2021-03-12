@@ -1,5 +1,4 @@
 [
     {"version" : 1, "name" : "testSheet1", "source": "./testSheet1.json"},
-    {"version" : 2, "name" : "testSheet2", "source": "./testSheet2.json" },
-    {"version" : 2, "name" : "testSheet3", "source": "./testSheet2.json" }
+    {"version" : 2, "name" : "testSheet2", "source": "./testSheet2.json" }
 ]
